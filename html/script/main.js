@@ -5,8 +5,8 @@ $(function() {
     fecthData(defaultFecthNum);
 
     $("#btn-update").click(function() {
-        $("#btn-update").attr("disabled", true)
-        $("#btn-update").html("Atualizando...")
+        $("#btn-update").attr("disabled", true);
+        $("#btn-update").html("Atualizando...");
 		updateData();
 	});
 });
@@ -50,7 +50,7 @@ function updateData() {
     .done(
         function(data) {
             fecthData();
-            $("#btn-update").html("Atualizar <span class='glyphicon glyphicon-refresh'></span>")
+            $("#btn-update").html("Atualizar <span class='glyphicon glyphicon-refresh'></span>");
             $("#btn-update").removeAttr("disabled");
         });
 }
