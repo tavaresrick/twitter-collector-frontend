@@ -1,0 +1,28 @@
+version: "3.4"
+services:
+
+  frontend:
+    image: tavaresrick/twitter-collector-frontend:$TAG
+    ports:
+      - "80:80"
+    environment:
+      - BACKEND_URL=$BACKEND_URL
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 1m
+        max_failure_ratio: 0.1
+        failure_action: rollback
+        order: start-first
+      placement:
+          constraints:
+              - node.role == worker
+              - node.labels.service == frontend
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 20s
+    command: /bin/bash -c "envsubst < /usr/share/nginx/html/script/main.js > /usr/share/nginx/html/script/main.js.new && mv -f /usr/share/nginx/html/script/main.js.new /usr/share/nginx/html/script/main.js && exec nginx -g 'daemon off;'"
