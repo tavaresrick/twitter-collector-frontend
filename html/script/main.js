@@ -1,5 +1,5 @@
 var defaultFecthNum = 5;
-var backendUrl = '<BACKENDURL>';
+var backendUrl = '${BACKEND_URL}';
 
 $(function() {
     fecthData(defaultFecthNum);
