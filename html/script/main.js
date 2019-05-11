@@ -43,7 +43,7 @@ function fillTable(data) {
 };
 
 function updateData() {
-    $.ajax('http://localhost:8000/update',{
+    $.ajax(backendUrl+'/update',{
         async: true,
         method: 'GET',
     })
