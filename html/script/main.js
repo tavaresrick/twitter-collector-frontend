@@ -24,6 +24,9 @@ function fecthData() {
 };
 
 function fillTable(data) {
+    if (!data) {
+        return
+    }
     if (data.length > 0) {
         $("#no-data-msg").hide(0);
         $("#data-table tbody").empty();
