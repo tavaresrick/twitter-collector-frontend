@@ -7,7 +7,8 @@ $(function() {
     $("#btn-update").click(function() {
         $("#btn-update").attr("disabled", true);
         $("#btn-update").html("Atualizando...");
-		updateData();
+        updateData();
+        fecthData(defaultFecthNum);
 	});
 });
 
